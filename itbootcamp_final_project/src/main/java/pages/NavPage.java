@@ -29,6 +29,9 @@ public class NavPage {
     public WebElement getUsersLink (){
         return driver.findElement(By.linkText("Users"));
     }
+    public WebElement getLoginButton (){
+        return driver.findElement(By.className("btnLogin"));
+    }
     public WebElement getLogoutButton (){
         return driver.findElement(By.className("btnLogout"));
     }
