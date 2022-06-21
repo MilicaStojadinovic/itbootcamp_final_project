@@ -7,12 +7,11 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BasicTest {
     @Test(priority = 1)
-    public void visitTheLoginPage() throws InterruptedException {
+    public void visitTheLoginPage(){
 
         navPage.getLanguageButton().click();
         navPage.getENLanguageButton().click();
         navPage.getLoginButton().click();
-        Thread.sleep(2000);
         Assert.assertTrue(driver
                         .getCurrentUrl()
                         .contains("/login"),
@@ -72,7 +71,7 @@ public class LoginTests extends BasicTest {
     }
 
     @Test(priority = 5)
-    public void login() throws InterruptedException {
+    public void login()  {
         String email = "admin@admin.com";
         String password = "12345";
         navPage.getLoginButton().click();
