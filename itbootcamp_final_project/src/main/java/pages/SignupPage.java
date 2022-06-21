@@ -14,22 +14,32 @@ public class SignupPage {
     public SignupPage(WebDriver driver) {
         this.driver = driver;
     }
-//String url = "https://vue-demo.daniel-avellaneda.com/signup";
-public WebElement getNameInput (){
-    return driver.findElement(By.name("name"));
-}
-    public WebElement getEmailInput (){
+
+    //String url = "https://vue-demo.daniel-avellaneda.com/signup";
+    public  WebElement getSignUpButton () {
+        return driver
+                .findElement(By.xpath("//*[contains(text(),'Sign Up')]"));
+    }
+    public WebElement getNameInput() {
+        return driver.findElement(By.name("name"));
+    }
+
+    public WebElement getEmailInput() {
         return driver.findElement(By.name("email"));
     }
-    public WebElement getPasswordInput (){
+
+    public WebElement getPasswordInput() {
         return driver.findElement(By.name("password"));
     }
-    public WebElement getConfirmPasswordInput (){
+
+    public WebElement getConfirmPasswordInput() {
         return driver.findElement(By.name("confirmPassword"));
     }
-    public WebElement getSignMeUpButton (){
-        return driver.findElement(By.xpath("//*[contains(text(),' Sign Up ')]"));
+
+    public WebElement getSignMeUpButton() {
+        return driver.findElement(By.xpath("//*[contains(text(),'Sign me up')]"));
     }
+
     public void waitForSignupUrlToBeVisible() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.urlContains("/signup"));
