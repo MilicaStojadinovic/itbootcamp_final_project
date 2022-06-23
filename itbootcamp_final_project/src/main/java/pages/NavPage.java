@@ -50,5 +50,8 @@ public class NavPage {
     public WebElement getCNLanguageButton (){
         return driver.findElement(By.className("btnCN"));
     }
-
+    public  WebElement getSignUpButton () {
+        return driver
+                .findElement(By.xpath("//*[contains(text(),'Sign Up')]"));
+    }
 }
