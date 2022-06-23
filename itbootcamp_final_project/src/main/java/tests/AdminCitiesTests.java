@@ -31,6 +31,20 @@ public class AdminCitiesTests extends BasicTest {
                 "text",
                 "[ERROR] Input name is not type 'text'!");
 
+    }
+    @Test (priority = 3)
+    public void createNewCity(){
+        navPage.getAdminButton().click();
+        navPage.getCitiesLink().click();
+        citiesPage.getNewItemButton().click();
+        citiesPage.waitForNewItemDialogToBeVisible();
+        citiesPage.getNameInput().sendKeys("S's city");
+        citiesPage.getSaveButton().click();
+        messagePopUpPage.waitForSuccessfullySavedDialogToBeVisible();
+        Assert.assertTrue(
+                messagePopUpPage.messageTitleSuccessfullySaved().getText()
+                        .contains("Saved successfully"),
+                "[ERROR] Message pop up does not contains 'Saved successfully'");
 
     }
 }

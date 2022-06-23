@@ -49,4 +49,14 @@ public class MessagePopUpPage {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.className("dlgVerifyAccount")));
     }
+    public void waitForSuccessfullySavedDialogToBeVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//*[contains(text(),'Saved successfully')]")));
+    }
+    public WebElement messageTitleSuccessfullySaved(){
+        return driver
+                .findElement(By.xpath("//*[contains(text(),'Saved successfully')]"));
+    }
+
 }
