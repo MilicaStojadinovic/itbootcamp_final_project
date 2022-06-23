@@ -25,7 +25,10 @@ public class CitiesPage {
     }
 
     public WebElement getSearchInput() {
-        return driver.findElement(By.name("search"));
+        return driver.findElement(By.id("search"));
+    }
+    public WebElement getCancelButton() {
+        return driver.findElement(By.xpath("//*[contains(text(),'Cancel')]"));
     }
     public void waitForCitiesUrlToBeVisible() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -35,6 +38,12 @@ public class CitiesPage {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.id("edit")));
+
+    }
+    public void waitForNameInputDialogToBeVisible() {
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.id("search")));
 
     }
     public void waitForNewItemDialogToBeVisible() {
@@ -55,6 +64,9 @@ public class CitiesPage {
     public WebElement getDeleteButton() {
         return driver.findElement(By.id("delete"));
     }
+    public WebElement getDialogDeleteButton() {
+        return driver.findElement(By.xpath("//*[contains(text(),' Delete ')]"));
+    }
     public void waitForSpecificNumberOfRows(int rowNumbers) {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions
@@ -62,14 +74,15 @@ public class CitiesPage {
 
     }
     public WebElement getTableCell (int rowIndex, int columnIndex) {
-       return driver.findElement(By.xpath("//tbody/tr["+rowIndex+"]/td["+columnIndex+"]"));
+       return driver.findElement(By.xpath("//tbody/tr["+ (rowIndex) +"]/td["+(columnIndex)+"]"));
     }
     public WebElement getEditByRowNumber(int rowNumber){
-       return driver.findElements(By.id("edit")).get(rowNumber);
+       return driver.findElements(By.id("edit")).get(rowNumber-1);
     }
     public WebElement getDeleteByRowNumber(int rowNumber){
-        return driver.findElements(By.id("delete")).get(rowNumber);
+        return driver.findElements(By.id("delete")).get(rowNumber-1);
     }
+
 
 
 

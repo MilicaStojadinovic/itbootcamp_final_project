@@ -20,6 +20,11 @@ public class MessagePopUpPage {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.className("v-snack__content")));
     }
+    public void waitForDeleteDialogToBeVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Deleted successfully')]")));
+    }
 
     public WebElement messageTitleWrongUser(){
         return driver
@@ -57,6 +62,10 @@ public class MessagePopUpPage {
     public WebElement messageTitleSuccessfullySaved(){
         return driver
                 .findElement(By.xpath("//*[contains(text(),'Saved successfully')]"));
+    }
+    public WebElement messageTitleSuccessfullyDeleted(){
+        return driver
+                .findElement(By.xpath("//*[contains(text(),'Deleted successfully')]"));
     }
 
 }
