@@ -18,16 +18,29 @@ public class CitiesPage {
 
     //String url = "https://vue-demo.daniel-avellaneda.com/signup/admin/cities";
     public WebElement getNewItemButton() {
-        return driver.findElement(By.className("v-btn__content"));
+        return driver.findElement(By.xpath("//*[contains(text(),' New Item ')]"));
     }
+    public WebElement getNameInput() {
+        return driver.findElement(By.name("name"));
+    }
+
     public WebElement getSearchInput() {
         return driver.findElement(By.name("search"));
     }
-
+    public void waitForCitiesUrlToBeVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.urlContains("/admin/cities"));
+    }
     public void waitForEditDialogToBeVisible() {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.id("edit")));
+
+    }
+    public void waitForNewItemDialogToBeVisible() {
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//*[contains(text(),'Cancel')]")));
 
     }
     public void waitForDeleteDialogToBeVisible() {

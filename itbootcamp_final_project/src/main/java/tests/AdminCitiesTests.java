@@ -14,9 +14,23 @@ public class AdminCitiesTests extends BasicTest {
         loginPage.getLoginButton().click();
         navPage.getAdminButton().click();
         navPage.getCitiesLink().click();
+        citiesPage.waitForCitiesUrlToBeVisible();
         Assert.assertTrue(driver
                         .getCurrentUrl()
                         .contains("/admin/cities"),
                 "[ERROR] Page url does not contains '/admin/cities'!");
+    }
+    @Test (priority = 2)
+    public void checksInputTypesForCreateEditNewCity (){
+        navPage.getAdminButton().click();
+        navPage.getCitiesLink().click();
+        citiesPage.getNewItemButton().click();
+        citiesPage.waitForNewItemDialogToBeVisible();
+        Assert.assertEquals(
+                citiesPage.getNameInput().getAttribute("type"),
+                "text",
+                "[ERROR] Input name is not type 'text'!");
+
+
     }
 }
